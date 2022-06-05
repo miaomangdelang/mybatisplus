@@ -22,13 +22,13 @@ public class User extends Model<User> {
      * @TableId 注解的type属性设置主键生成策略
      * @TableId (value = " uid ", type = IdType.AUTO)
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.NONE)
     private Long id;
 
     /**
      * 指定属性所对应的字段名
      */
-    @TableField("name")
+    @TableField(value = "name", condition = "%s like CONCAT (#{%s})", keepGlobalFormat = true)
     private String name;
 
     private Integer age;

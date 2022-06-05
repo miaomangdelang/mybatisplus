@@ -63,16 +63,9 @@ public class MyBatisPlusWrapperTest {
     public void test04() {
         //将（年龄大于20并且用户名中包含有a）或邮箱为null的用户信息修改
         //UPDATE t_user SET name=?, email=? WHERE is_deleted=0 AND (age > ? AND name LIKE ? OR email IS NULL)
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.gt("age", 20)
-                .like("name", "a")
-                .or()
-                .isNull("email");
-        User user = new User();
-        user.setName("小明");
-        user.setEmail("test@joing.com");
-        int result = userMapper.update(user, queryWrapper);
-        System.out.println("result:" + result);
+        List<User> userList = userMapper.selectList(new LambdaQueryWrapper<User>().gt(User::getAge, 20).or().isNull(User::getEmail).like(User::getName, "a"));
+//        int result = userMapper.update(user, queryWrapper);
+        System.out.println("result:" + userList);
     }
 
     @Test

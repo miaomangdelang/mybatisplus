@@ -1,5 +1,6 @@
 package com.joing.mybatisplus;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.joing.mybatisplus.entity.User;
 import com.joing.mybatisplus.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,14 @@ public class MyBatisPlusTest {
     private UserMapper userMapper;
 
     @Test
+    public void insert() {
+        User user = new User();
+        user.setName("111");
+        int insert = userMapper.insert(user);
+        System.out.println(insert);
+    }
+
+    @Test
     public void testSelectById() {
         // 根据id查询用户信息
         // SELECT id,name,age,email FROM user WHERE id=?
@@ -33,10 +42,9 @@ public class MyBatisPlusTest {
     public void testSelectByMap(){
         // 通过map条件查询用户信息
         // SELECT id,name,age,email FROM user WHERE name = ? AND age = ?
-        Map<String, Object> map = new HashMap<>();
-        map.put("age", 18);
-        map.put("name", "Jone");
-        List<User> list = userMapper.selectByMap(map);
+        User user = new User();
+        user.setName("Jack");
+        List<User> list = userMapper.selectList(new QueryWrapper<>(user));
         list.forEach(System.out::println);
     }
 

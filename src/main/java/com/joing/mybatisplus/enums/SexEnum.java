@@ -28,7 +28,7 @@ public enum SexEnum implements BaseEnum {
     /**
      * 将注解所标识的属性的值存储到数据库中
      */
-//    @EnumValue
+    @EnumValue
     private final Integer code;
 
     @JsonValue

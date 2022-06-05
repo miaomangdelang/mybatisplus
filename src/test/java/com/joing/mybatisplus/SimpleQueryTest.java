@@ -44,7 +44,7 @@ public class SimpleQueryTest {
     @Test
     public void list() {
         // 获取nameList
-        List<String> nameList = SimpleQuery.list(Wrappers.lambdaQuery(), User::getName, true, name -> name.setName(name.getName() + "1"), System.out::println);
+        List<String> nameList = SimpleQuery.list(Wrappers.lambdaQuery(), User::getName, true, name -> name.setName(name.getName() + "1"));
         System.out.println(nameList);
     }
 
