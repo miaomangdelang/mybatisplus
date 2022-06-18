@@ -1,6 +1,7 @@
 package com.joing.mybatisplus.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
 import org.apache.ibatis.annotations.Param;
@@ -18,7 +19,7 @@ public interface MyBaseMapper<T> extends BaseMapper<T> {
      *
      * @return 删除数量
      */
-    Integer deleteAll(@Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
+    Integer deleteAll();
 
     /**
      * 批量插入
@@ -36,7 +37,13 @@ public interface MyBaseMapper<T> extends BaseMapper<T> {
      */
     int alwaysUpdateSomeColumnById(@Param(Constants.ENTITY) T entity);
 
-    int alwaysUpdateSomeColumnById();
+    /**
+     * 更新
+     *
+     * @param queryWrapper
+     * @return
+     */
+    int alwaysUpdateSomeColumnById(@Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
 
     /**
      * 删除

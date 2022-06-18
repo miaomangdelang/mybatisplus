@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "user", schema = "mybatis_plus")
+@TableName(value = "t_user", schema = "mybatis_plus")
 public class User extends Model<User> {
 
     /**
@@ -35,11 +35,11 @@ public class User extends Model<User> {
 
     private String email;
 
-    @TableField(value = "sex", exist = false)
+    @TableField(value = "sex")
     private SexEnum sex;
 
-//    @TableLogic
-    @TableField(value = "is_deleted", exist = false)
+    @TableLogic
+    @TableField(value = "is_deleted")
     private Integer isDeleted;
 
     private static final long serialVersionUID = 4978401788968072550L;

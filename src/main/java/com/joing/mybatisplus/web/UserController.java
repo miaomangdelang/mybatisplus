@@ -1,6 +1,7 @@
 package com.joing.mybatisplus.web;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.joing.mybatisplus.entity.User;
 import com.joing.mybatisplus.mapper.UserMapper;
 import com.joing.mybatisplus.web.input.UserInput;

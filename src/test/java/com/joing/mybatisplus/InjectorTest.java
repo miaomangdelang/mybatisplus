@@ -15,13 +15,20 @@ import javax.annotation.Resource;
 @SpringBootTest
 public class InjectorTest {
 
-
     @Resource
     private UserMapper userMapper;
 
     @Test
     public void deleteAll() {
-        System.out.println(userMapper.deleteAll(new QueryWrapper<User>().lambda().eq(User:: getName, "aaa")));
+        System.out.println(userMapper.deleteAll());
+    }
+
+    @Test
+    public void alwaysUpdateSomeColumnById() {
+        User user = new User();
+        user.setId(1L);
+        user.setName("1122");
+        userMapper.alwaysUpdateSomeColumnById(user);
     }
 
 }
